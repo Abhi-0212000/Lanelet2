@@ -220,8 +220,8 @@ void RoutingGraphBuilder::addConflictingEdge(const ConstLanelet& ll, const Lanel
   for (auto& result : results) {
     if (bothWaysLaneletIds_.find(ll.id()) != bothWaysLaneletIds_.end() && result == ll) {
       other = result.invert();
-      assignCosts(ll, other, RelationType::Conflicting);
-      assignCosts(other, ll, RelationType::Conflicting);
+      // assignCosts(ll, other, RelationType::Conflicting);
+      // assignCosts(other, ll, RelationType::Conflicting);
       continue;
     }
     other = result;
@@ -234,8 +234,8 @@ void RoutingGraphBuilder::addConflictingEdge(const ConstLanelet& ll, const Lanel
     }
     auto maxHeight = participantHeight();
     if ((maxHeight && geometry::overlaps3d(ll, other, *maxHeight)) || (!maxHeight && geometry::overlaps2d(ll, other))) {
-      assignCosts(ll, other, RelationType::Conflicting);
-      assignCosts(other, ll, RelationType::Conflicting);
+      // assignCosts(ll, other, RelationType::Conflicting);
+      // assignCosts(other, ll, RelationType::Conflicting);
     }
   }
 }
